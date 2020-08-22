@@ -14,8 +14,8 @@ public abstract class BaseEntity {
 	private String updatedBy;
 	private String deletedBy;
 	private Date createdDate;
-	private String updatedDate;
-	private String deletedDate;
+	private Date updatedDate;
+	private Date deletedDate;
 
 	public String getCreatedBy() {
 		return createdBy;
@@ -53,21 +53,21 @@ public abstract class BaseEntity {
 
 	@Column(name = "updatedbdate")
 	@Temporal(TemporalType.DATE)
-	public String getUpdatedDate() {
+	public Date getUpdatedDate() {
 		return updatedDate;
 	}
 
-	public void setUpdatedDate(String updatedDate) {
+	public void setUpdatedDate(Date updatedDate) {
 		this.updatedDate = updatedDate;
 	}
 
 	@Column(name = "deletedbdate")
 	@Temporal(TemporalType.DATE)
-	public String getDeletedDate() {
+	public Date getDeletedDate() {
 		return deletedDate;
 	}
 
-	public void setDeletedDate(String deletedDate) {
+	public void setDeletedDate(Date deletedDate) {
 		this.deletedDate = deletedDate;
 	}
 
