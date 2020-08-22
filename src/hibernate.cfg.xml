@@ -12,6 +12,7 @@
 		
 		
 		<mapping class="com.hokumus.schoolmanagement.model.user.Users"/>
+		<mapping class="com.hokumus.schoolmanagement.model.student.Student"/>
 	</session-factory>
 	
 	
