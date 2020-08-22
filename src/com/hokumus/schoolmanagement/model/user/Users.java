@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 import com.hokumus.schoolmanagement.model.util.BaseEntity;
 //Askin's First Commit Test
-//Emrah ilk komut
+//Emrah ilk komut deneme
 @Entity
 @Table(name = "schooluser")
 public class Users extends BaseEntity {
