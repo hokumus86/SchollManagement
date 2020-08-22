@@ -12,6 +12,7 @@
 		
 		
 		<mapping class="com.hokumus.schoolmanagement.model.user.Users"/>
+		<mapping class="com.hokumus.schoolmanagement.model.teacher.StudentAttendance"/>
 		<mapping class="com.hokumus.schoolmanagement.model.management.Courses"/>
 		<mapping class="com.hokumus.schoolmanagement.model.management.GroupDays"/>
 		<mapping class="com.hokumus.schoolmanagement.model.management.Groups"/>
@@ -20,7 +21,7 @@
 		<mapping class="com.hokumus.schoolmanagement.model.student.StudentGroups"/>
 		<mapping class="com.hokumus.schoolmanagement.model.student.StudentPayments"/>
 		<mapping class="com.hokumus.schoolmanagement.model.teacher.Teacher"/>
-		<mapping class="com.hokumus.schoolmanagement.model.teacher.StudentAttendance"/>
+		
 		
 	</session-factory>
 	
