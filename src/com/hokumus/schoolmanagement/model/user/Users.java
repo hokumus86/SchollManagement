@@ -6,11 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.SequenceGenerators;
+
 import javax.persistence.Table;
 
 import com.hokumus.schoolmanagement.model.util.BaseEntity;
-
+//Askin's First Commit Test
 @Entity
 @Table(name = "schooluser")
 public class Users extends BaseEntity {
