@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -23,6 +24,7 @@ import org.hibernate.Transaction;
 import com.hokumus.schoolmanagement.dao.users.UserDao;
 import com.hokumus.schoolmanagement.dao.util.MyHibernateUtil;
 import com.hokumus.schoolmanagement.model.user.Users;
+import com.hokumus.schoolmanagement.utils.Util;
 
 public class UserManagement extends JFrame {
 
@@ -48,7 +50,7 @@ public class UserManagement extends JFrame {
 	private void initialize() {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Ana Ekran");
-		setSize(532, 500);
+		setSize(577, 541);
 		getContentPane().setLayout(null);
 		getContentPane().add(getScrollUser());
 		getContentPane().add(getMenuBar_1());
@@ -64,7 +66,7 @@ public class UserManagement extends JFrame {
 	private JScrollPane getScrollUser() {
 		if (scrollUser == null) {
 			scrollUser = new JScrollPane();
-			scrollUser.setBounds(50, 106, 286, 231);
+			scrollUser.setBounds(10, 106, 448, 231);
 			scrollUser.setViewportView(getTblUser());
 		}
 		return scrollUser;
@@ -90,7 +92,7 @@ public class UserManagement extends JFrame {
 	private void tabloDoldur() {
 		UserDao dao = new UserDao();
 		List<Users> liste = dao.getir(new Users());
-		String[] columnNames = { "id", "Kullanýcý Adý", "Þifre", "Adý", "Soyadý" };
+		String[] columnNames = { "id", "Kullanýcý Adý", "Þifre", "Adý", "Soyadý","creater", "created time", "updater","updated time" };
 		String[][] data = new String[liste.size()][columnNames.length];
 		for (int i = 0; i < liste.size(); i++) {
 			data[i][0] = "" + liste.get(i).getId();
@@ -98,6 +100,10 @@ public class UserManagement extends JFrame {
 			data[i][2] = liste.get(i).getPassword();
 			data[i][3] = liste.get(i).getName();
 			data[i][4] = liste.get(i).getSurname();
+			data[i][5] = liste.get(i).getCreatedBy();
+			data[i][6] = liste.get(i).getCreatedDate() != null ? liste.get(i).getCreatedDate().toString():"";
+			data[i][7] = liste.get(i).getUpdatedBy();
+			data[i][8] = liste.get(i).getUpdatedDate() != null?liste.get(i).getUpdatedDate().toGMTString():"" ;
 
 		}
 		DefaultTableModel model = new DefaultTableModel(data, columnNames);
@@ -188,7 +194,7 @@ public class UserManagement extends JFrame {
 	private JTextField getTxtUserName() {
 		if (txtUserName == null) {
 			txtUserName = new JTextField();
-			txtUserName.setBounds(346, 107, 86, 20);
+			txtUserName.setBounds(468, 106, 86, 20);
 			txtUserName.setColumns(10);
 		}
 		return txtUserName;
@@ -197,7 +203,7 @@ public class UserManagement extends JFrame {
 	private JTextField getTxtPassword() {
 		if (txtPassword == null) {
 			txtPassword = new JTextField();
-			txtPassword.setBounds(346, 138, 86, 20);
+			txtPassword.setBounds(468, 137, 86, 20);
 			txtPassword.setColumns(10);
 		}
 		return txtPassword;
@@ -206,7 +212,7 @@ public class UserManagement extends JFrame {
 	private JTextField getTxtName() {
 		if (txtName == null) {
 			txtName = new JTextField();
-			txtName.setBounds(346, 177, 86, 20);
+			txtName.setBounds(468, 176, 86, 20);
 			txtName.setColumns(10);
 		}
 		return txtName;
@@ -215,7 +221,7 @@ public class UserManagement extends JFrame {
 	private JTextField getTxtSurname() {
 		if (txtSurname == null) {
 			txtSurname = new JTextField();
-			txtSurname.setBounds(346, 225, 86, 20);
+			txtSurname.setBounds(468, 224, 86, 20);
 			txtSurname.setColumns(10);
 		}
 		return txtSurname;
@@ -224,7 +230,7 @@ public class UserManagement extends JFrame {
 	private JButton getBtnUpdate() {
 		if (btnUpdate == null) {
 			btnUpdate = new JButton("G\u00FCncelle");
-			btnUpdate.setBounds(346, 280, 91, 23);
+			btnUpdate.setBounds(468, 279, 91, 23);
 			btnUpdate.addActionListener(new ActionListener() {
 
 				@Override
@@ -237,6 +243,8 @@ public class UserManagement extends JFrame {
 					temp.setPassword(txtPassword.getText());
 					temp.setName(txtName.getText());
 					temp.setSurname(txtSurname.getText());
+					temp.setUpdatedBy(Util.loginedUser.getUsername());
+					temp.setUpdatedDate(new Date());
 					dao.guncelle(temp);
 					tabloDoldur();
 				}

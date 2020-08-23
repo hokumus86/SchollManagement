@@ -2,6 +2,7 @@ package com.hokumus.schoolmanagement.ui.user;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,6 +10,7 @@ import javax.swing.JTextField;
 
 import com.hokumus.schoolmanagement.dao.users.UserDao;
 import com.hokumus.schoolmanagement.model.user.Users;
+import com.hokumus.schoolmanagement.utils.Util;
 
 public class AddUser extends JFrame{
 	private JTextField txtUserName;
@@ -94,6 +96,8 @@ public class AddUser extends JFrame{
 					temp.setPassword(txtPassword.getText());
 					temp.setSurname(txtName.getText());
 					temp.setName(txtSurname.getText());
+					temp.setCreatedBy(Util.loginedUser.getUsername());
+					temp.setCreatedDate(new Date());
 					dao.kaydet(temp);
 					
 				}
