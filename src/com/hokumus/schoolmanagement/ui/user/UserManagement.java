@@ -1,4 +1,4 @@
-package com.hokumus.schoolmanagement.ui.main;
+package com.hokumus.schoolmanagement.ui.user;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
