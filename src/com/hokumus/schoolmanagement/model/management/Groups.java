@@ -12,11 +12,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.hokumus.schoolmanagement.model.teacher.Teacher;
+import com.hokumus.schoolmanagement.model.util.BaseEntity;
 
 @Entity
 @Table(name = "groups")
-public class Groups {
+public class Groups extends BaseEntity{
 
+	
 	private Long id;
 	private String name;
 	private Courses Courses;
@@ -26,14 +28,15 @@ public class Groups {
 	private Days Days;
 	private Date starteddate;
 	private Date finisdate;
-
+	
+	@Id
+	@SequenceGenerator(name = "seq_group", allocationSize = 1, sequenceName = "seq_group")
+	@GeneratedValue(generator = "seq_group", strategy = GenerationType.SEQUENCE)
 	public Long getId() {
 		return id;
 	}
 
-	@Id
-	@SequenceGenerator(name = "seq_group", allocationSize = 1, sequenceName = "seq_group")
-	@GeneratedValue(generator = "seq_group", strategy = GenerationType.SEQUENCE)
+	
 	public void setId(Long id) {
 		this.id = id;
 	}

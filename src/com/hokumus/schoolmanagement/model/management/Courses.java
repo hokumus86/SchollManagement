@@ -3,12 +3,14 @@ package com.hokumus.schoolmanagement.model.management;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import com.hokumus.schoolmanagement.model.util.BaseEntity;
 
@@ -23,8 +25,8 @@ public class Courses extends BaseEntity {
 	private String status;
 
 	@Id
-    @SequenceGenerator(name = "seq_course", allocationSize = 1, sequenceName = "seq_course")
-    @GeneratedValue(generator = "seq_course", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "seq_course", allocationSize = 1, sequenceName = "seq_course")
+	@GeneratedValue(generator = "seq_course", strategy = GenerationType.SEQUENCE)
 	public Long getId() {
 		return id;
 	}
@@ -41,6 +43,8 @@ public class Courses extends BaseEntity {
 		this.name = name;
 	}
 
+	@Column(name = "startdate")
+	@Temporal(javax.persistence.TemporalType.DATE)
 	public Date getStarteddate() {
 		return starteddate;
 	}
