@@ -2,10 +2,17 @@ package com.hokumus.schoolmanagement.ui.user;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import com.hokumus.schoolmanagement.dao.users.UserDao;
+import com.hokumus.schoolmanagement.model.user.Users;
+import com.hokumus.schoolmanagement.ui.main.MainScreen;
+import com.hokumus.schoolmanagement.utils.Util;
 
 public class GirisEkrani extends JFrame {
 	private JTextField txtKullaniciAdi;
@@ -56,6 +63,24 @@ public class GirisEkrani extends JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					UserDao dao = new UserDao();
+					boolean durum = false;
+					List<Users> liste = dao.getir(new Users());
+					for (Users users : liste) {
+						if(users.getUsername().equals(txtKullaniciAdi.getText())&& 
+								users.getPassword().equals(txtSifre.getText())) {
+							durum = true;
+							Util.loginedUser = users;
+							new MainScreen().setVisible(true);
+							
+							break;
+							
+						}
+						
+					}
+					if(!durum) {
+						JOptionPane.showMessageDialog(GirisEkrani.this, "kullanýcý hatalý");
+					}
 
 				}
 			});
