@@ -38,6 +38,7 @@ public class AddUser extends JFrame{
 	private JTextField getTxtUserName() {
 		if (txtUserName == null) {
 			txtUserName = new JTextField();
+			txtUserName.setToolTipText("Username");
 			txtUserName.setBounds(61, 44, 86, 20);
 			txtUserName.setColumns(10);
 		}
@@ -46,6 +47,7 @@ public class AddUser extends JFrame{
 	private JTextField getTxtPassword() {
 		if (txtPassword == null) {
 			txtPassword = new JTextField();
+			txtPassword.setToolTipText("Password");
 			txtPassword.setBounds(237, 44, 86, 20);
 			txtPassword.setColumns(10);
 		}
@@ -54,6 +56,7 @@ public class AddUser extends JFrame{
 	private JTextField getTxtName() {
 		if (txtName == null) {
 			txtName = new JTextField();
+			txtName.setToolTipText("Name");
 			txtName.setBounds(61, 112, 86, 20);
 			txtName.setColumns(10);
 		}
@@ -62,6 +65,7 @@ public class AddUser extends JFrame{
 	private JTextField getTxtSurname() {
 		if (txtSurname == null) {
 			txtSurname = new JTextField();
+			txtSurname.setToolTipText("Surname");
 			txtSurname.setBounds(237, 112, 86, 20);
 			txtSurname.setColumns(10);
 		}

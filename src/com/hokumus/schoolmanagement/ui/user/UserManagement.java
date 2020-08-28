@@ -194,6 +194,10 @@ public class UserManagement extends JFrame {
 	private JTextField getTxtUserName() {
 		if (txtUserName == null) {
 			txtUserName = new JTextField();
+			txtUserName.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			txtUserName.setBounds(468, 106, 86, 20);
 			txtUserName.setColumns(10);
 		}
