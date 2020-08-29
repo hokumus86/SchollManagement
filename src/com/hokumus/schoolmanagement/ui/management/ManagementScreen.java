@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import com.hokumus.schoolmanagement.ui.addteacher.AddTeacherFrame;
 import com.hokumus.schoolmanagement.ui.course.CreateCourseFrame;
 import com.hokumus.schoolmanagement.ui.main.MainScreen;
+import com.hokumus.schoolmanagement.ui.student.AddStudentFrame;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import java.awt.Font;
@@ -61,6 +63,11 @@ public class ManagementScreen extends JFrame {
 		mnNewMenu.add(menuitemAddTeacher);
 		
 		JMenuItem menuitemAddStudent = new JMenuItem("\u00D6\u011Frenci Ekle");
+		menuitemAddStudent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AddStudentFrame().setVisible(true);
+			}
+		});
 		menuitemAddStudent.setFont(new Font("Arial", Font.BOLD, 13));
 		mnNewMenu.add(menuitemAddStudent);
 		
@@ -68,6 +75,7 @@ public class ManagementScreen extends JFrame {
 		menuitemAddClassroom.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new AddLessonClass().setVisible(true);
+				
 			}
 		});
 		menuitemAddClassroom.setFont(new Font("Arial", Font.BOLD, 13));
