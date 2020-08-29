@@ -1,4 +1,4 @@
-package com.hokumus.schoolmanagement.dao.management;
+package com.hokumus.schoolmanagement.dao.teacher;
 
 import com.hokumus.schoolmanagement.dao.util.DBServices;
 import com.hokumus.schoolmanagement.model.teacher.Teacher;

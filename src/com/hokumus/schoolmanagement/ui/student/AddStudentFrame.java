@@ -20,7 +20,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
-import com.hokumus.schoolmanagement.alldaos.StudentDao;
+import com.hokumus.schoolmanagement.dao.student.StudentDao;
 import com.hokumus.schoolmanagement.model.student.GenderEnums;
 import com.hokumus.schoolmanagement.model.student.Student;
 import com.hokumus.schoolmanagement.model.teacher.Teacher;
