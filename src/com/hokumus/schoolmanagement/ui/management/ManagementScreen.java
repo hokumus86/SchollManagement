@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ManagementScreen extends JFrame {
+	private JMenuItem mnýtmNewMenuItem;
 
 	public ManagementScreen() {
 		addWindowListener(new WindowAdapter() {
@@ -64,9 +65,21 @@ public class ManagementScreen extends JFrame {
 		mnNewMenu.add(menuitemAddStudent);
 		
 		JMenuItem menuitemAddClassroom = new JMenuItem("Derslik Ekle");
+		menuitemAddClassroom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new AddLessonClass().setVisible(true);
+			}
+		});
 		menuitemAddClassroom.setFont(new Font("Arial", Font.BOLD, 13));
 		mnNewMenu.add(menuitemAddClassroom);
+		mnNewMenu.add(getMnýtmNewMenuItem());
 		setSize(600, 600);
 
+	}
+	private JMenuItem getMnýtmNewMenuItem() {
+		if (mnýtmNewMenuItem == null) {
+			mnýtmNewMenuItem = new JMenuItem("New menu item");
+		}
+		return mnýtmNewMenuItem;
 	}
 }

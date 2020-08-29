@@ -23,8 +23,8 @@ import javax.swing.JTextPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
-import com.hokumus.schoolmanagement.alldaos.CoursesDao;
-import com.hokumus.schoolmanagement.alldaos.TeacherDao;
+import com.hokumus.schoolmanagement.dao.management.CoursesDao;
+import com.hokumus.schoolmanagement.dao.management.TeacherDao;
 import com.hokumus.schoolmanagement.model.management.Courses;
 import com.hokumus.schoolmanagement.model.teacher.Teacher;
 import javax.swing.ScrollPaneConstants;

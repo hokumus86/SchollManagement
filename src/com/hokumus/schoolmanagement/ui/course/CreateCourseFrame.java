@@ -25,7 +25,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.hokumus.schoolmanagement.alldaos.CoursesDao;
+import com.hokumus.schoolmanagement.dao.management.CoursesDao;
 import com.hokumus.schoolmanagement.model.management.Courses;
 import com.hokumus.schoolmanagement.utils.Util;
 import com.toedter.calendar.JDateChooser;
