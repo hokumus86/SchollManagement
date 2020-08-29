@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.hokumus.schoolmanagement.model.util.BaseEntity;
@@ -48,6 +50,8 @@ public class StudentPayments extends BaseEntity{
 		this.payment = payment;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "student_id")
 	public Student getStudent() {
 		return student;
 	}

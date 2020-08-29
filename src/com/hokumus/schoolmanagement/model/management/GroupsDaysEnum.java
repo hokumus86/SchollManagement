@@ -1,5 +1,5 @@
 package com.hokumus.schoolmanagement.model.management;
 
-public enum KursGunleri {
+public enum GroupsDaysEnum {
 	HAFTA_ICI, HAFTA_SONU;
 }
