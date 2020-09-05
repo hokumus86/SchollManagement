@@ -1,5 +1,6 @@
 package com.hokumus.schoolmanagement.dao.util;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -125,8 +126,29 @@ public class DBServices<T>  implements IDBServices<T>{
 
 	@Override
 	public List<T> ara(T temp) {
-		// TODO Auto-generated method stub
-		return null;
+		List<T> liste = null;
+		Class cl = temp.getClass();
+		Field[] fields =cl.getDeclaredFields();
+		getSessionAndTrans();
+		Criteria cr = session.createCriteria(cl);
+		for (int i = 0; i < fields.length; i++) {
+			fields[i].setAccessible(true);
+			try {
+				if(fields[i].get(temp) != null) {
+					cr.add(Restrictions.ilike(fields[i].getName(), "%"+fields[i].get(temp)+"%"));
+				}
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		liste = cr.list();
+		return liste;
 	}
 
 }

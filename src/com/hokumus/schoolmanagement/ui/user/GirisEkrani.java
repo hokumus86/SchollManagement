@@ -11,23 +11,34 @@ import javax.swing.JTextField;
 
 import com.hokumus.schoolmanagement.dao.users.UserDao;
 import com.hokumus.schoolmanagement.model.user.Users;
+import com.hokumus.schoolmanagement.model.util.Operations;
 import com.hokumus.schoolmanagement.ui.main.MainScreen;
 import com.hokumus.schoolmanagement.utils.Util;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class GirisEkrani extends JFrame {
 	private JTextField txtKullaniciAdi;
 	private JTextField txtSifre;
 	private JButton btnGiris;
 	private JButton btnIptal;
+	private MainScreen openingFrame;
 
 	public GirisEkrani() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				if (Operations.callFrame != openingFrame && Operations.closingFrame != GirisEkrani.this)
+					System.exit(0);
+			}
+		});
 		initialize();
 	}
 
 	private void initialize() {
 		setTitle("Giriþ Ekraný");
 		setSize(400, 400);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		getContentPane().setLayout(null);
 		getContentPane().add(getTxtKullaniciAdi());
 		getContentPane().add(getTxtSifre());
@@ -67,18 +78,22 @@ public class GirisEkrani extends JFrame {
 					boolean durum = false;
 					List<Users> liste = dao.getir(new Users());
 					for (Users users : liste) {
-						if(users.getUsername().equals(txtKullaniciAdi.getText())&& 
-								users.getPassword().equals(txtSifre.getText())) {
+						if (users.getUsername().equals(txtKullaniciAdi.getText())
+								&& users.getPassword().equals(txtSifre.getText())) {
 							durum = true;
 							Util.loginedUser = users;
-							new MainScreen().setVisible(true);
-							
+							openingFrame = new MainScreen();
+							Operations.callFrame = openingFrame;
+							Operations.closingFrame = GirisEkrani.this;
+							openingFrame.setVisible(true);
+							GirisEkrani.this.dispose();
+
 							break;
-							
+
 						}
-						
+
 					}
-					if(!durum) {
+					if (!durum) {
 						JOptionPane.showMessageDialog(GirisEkrani.this, "kullanýcý hatalý");
 					}
 
